@@ -1,0 +1,900 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ===== VARIÁVEIS ===== */
+:root {
+  /* Preto */
+  --login-black-950: #0A0A0A;
+  --login-black-900: #121212;
+  --login-black-850: #1A1A1A;
+  --login-black-800: #1E1E1E;
+  --login-black-750: #242424;
+  --login-black-700: #2A2A2A;
+  --login-black-650: #303030;
+  
+  /* Azul */
+  --login-blue-deep: #0A2472;
+  --login-blue-royal: #1E3A8A;
+  --login-blue-navy: #2563EB;
+  --login-blue-medium: #3B82F6;
+  --login-blue-light: #60A5FA;
+  --login-blue-soft: #93C5FD;
+  
+  /* Amarelo */
+  --login-yellow-deep: #B45309;
+  --login-yellow-dark: #D97706;
+  --login-yellow-gold: #F59E0B;
+  --login-yellow-amber: #FBBF24;
+  --login-yellow-light: #FCD34D;
+  --login-yellow-soft: #FDE68A;
+  
+  /* Gradientes */
+  --login-gradient-blue: linear-gradient(135deg, var(--login-blue-deep), var(--login-blue-navy), var(--login-blue-light));
+  --login-gradient-gold: linear-gradient(135deg, var(--login-yellow-deep), var(--login-yellow-gold), var(--login-yellow-light));
+  --login-gradient-blue-gold: linear-gradient(135deg, var(--login-blue-navy), var(--login-blue-light), var(--login-yellow-gold));
+  --login-gradient-dark: linear-gradient(145deg, var(--login-black-900), var(--login-blue-deep));
+  
+  /* Textos */
+  --login-text-primary: #FFFFFF;
+  --login-text-secondary: rgba(255, 255, 255, 0.85);
+  --login-text-tertiary: rgba(255, 255, 255, 0.65);
+  --login-text-muted: rgba(255, 255, 255, 0.4);
+  
+  /* Efeitos */
+  --login-glass-bg: rgba(37, 99, 235, 0.03);
+  --login-glass-border: rgba(37, 99, 235, 0.15);
+  --login-glass-border-strong: rgba(37, 99, 235, 0.3);
+  --login-glass-border-gold: rgba(245, 158, 11, 0.3);
+  
+  --login-glow-blue-soft: 0 10px 30px -10px rgba(37, 99, 235, 0.3);
+  --login-glow-blue-medium: 0 15px 40px -10px rgba(37, 99, 235, 0.5);
+  --login-glow-blue-strong: 0 20px 50px -10px rgba(37, 99, 235, 0.7);
+  
+  --login-glow-gold-soft: 0 10px 30px -10px rgba(245, 158, 11, 0.3);
+  --login-glow-gold-medium: 0 15px 40px -10px rgba(245, 158, 11, 0.5);
+  --login-glow-gold-strong: 0 20px 50px -10px rgba(245, 158, 11, 0.7);
+  
+  /* Layout */
+  --login-border-radius-card: 24px;
+  --login-border-radius-element: 12px;
+  --login-border-radius-sm: 8px;
+  
+  /* Transições */
+  --login-transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --login-transition-fast: all 0.2s ease;
+}
+
+/* ===== LOGIN PAGE BASE ===== */
+/* TODOS OS ESTILOS SÃO PREFIXADOS COM .login-page PARA EVITAR VAZAMENTO */
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  background: var(--login-black-950);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== LEFT COLUMN - FORM ===== */
+.login-page .login-form-column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: var(--login-black-900);
+  position: relative;
+  overflow-y: auto;
+}
+
+.login-page .form-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.login-page .form-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-bottom: 40px;
+}
+
+.login-page .logo-wrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page .form-logo-img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  filter: brightness(0) invert(1);
+  transition: var(--login-transition-smooth);
+}
+
+.login-page .logo-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, var(--login-yellow-gold) 0%, transparent 70%);
+  opacity: 0;
+  border-radius: 50%;
+  transition: var(--login-transition-smooth);
+  animation: login-pulse 3s infinite;
+}
+
+@keyframes login-pulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.2); }
+}
+
+.login-page .form-logo:hover .logo-glow {
+  opacity: 0.5;
+}
+
+.login-page .logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.login-page .logo-text-primary {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--login-text-primary);
+  letter-spacing: -0.5px;
+}
+
+.login-page .logo-text-secondary {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  background: var(--login-gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.3px;
+}
+
+/* Header */
+.login-page .form-header {
+  margin-bottom: 32px;
+}
+
+.login-page .form-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--login-text-primary);
+  margin-bottom: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.login-page .form-subtitle {
+  font-size: 15px;
+  color: var(--login-text-tertiary);
+  line-height: 1.6;
+}
+
+/* User Type Toggle */
+.login-page .user-type-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding: 4px;
+  background: var(--login-black-800);
+  border: 1px solid var(--login-glass-border);
+  border-radius: 100px;
+}
+
+.login-page .type-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 100px;
+  color: var(--login-text-tertiary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--login-transition-fast);
+}
+
+.login-page .type-button.active {
+  background: var(--login-gradient-gold);
+  color: var(--login-black-950);
+  box-shadow: var(--login-glow-gold-soft);
+}
+
+.login-page .type-button:hover:not(.active) {
+  color: var(--login-yellow-gold);
+}
+
+/* Form */
+.login-page .form {
+  width: 100%;
+}
+
+.login-page .form-group {
+  margin-bottom: 20px;
+}
+
+.login-page .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--login-text-secondary);
+}
+
+.login-page .input-wrapper {
+  position: relative;
+}
+
+.login-page .input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--login-text-muted);
+  z-index: 2;
+}
+
+.login-page .form-input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  background: var(--login-black-800);
+  border: 1px solid var(--login-glass-border);
+  border-radius: var(--login-border-radius-element);
+  color: var(--login-text-primary);
+  font-size: 15px;
+  transition: var(--login-transition-smooth);
+}
+
+.login-page .form-input:hover {
+  border-color: var(--login-yellow-gold);
+  background: var(--login-black-750);
+}
+
+.login-page .form-input:focus {
+  outline: none;
+  border-color: var(--login-blue-navy);
+  background: var(--login-black-750);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.login-page .input-wrapper.error .form-input {
+  border-color: #EF4444;
+}
+
+.login-page .password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--login-text-tertiary);
+  cursor: pointer;
+  padding: 4px;
+  transition: var(--login-transition-fast);
+}
+
+.login-page .password-toggle:hover {
+  color: var(--login-yellow-gold);
+}
+
+.login-page .error-message {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #EF4444;
+}
+
+/* Password Strength */
+.login-page .password-strength {
+  margin-top: 8px;
+}
+
+.login-page .strength-bars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.login-page .strength-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  transition: var(--login-transition-fast);
+}
+
+.login-page .strength-text {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Forgot Password */
+.login-page .forgot-password {
+  text-align: right;
+  margin-bottom: 24px;
+}
+
+.login-page .forgot-password a {
+  color: var(--login-text-tertiary);
+  font-size: 13px;
+  text-decoration: none;
+  transition: var(--login-transition-fast);
+}
+
+.login-page .forgot-password a:hover {
+  color: var(--login-yellow-gold);
+}
+
+/* Terms and Newsletter */
+.login-page .terms-group,
+.login-page .newsletter-group {
+  margin-bottom: 16px;
+}
+
+.login-page .checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.login-page .checkbox-label input[type="checkbox"] {
+  margin-top: 2px;
+  accent-color: var(--login-yellow-gold);
+}
+
+.login-page .checkbox-text {
+  font-size: 13px;
+  color: var(--login-text-tertiary);
+  line-height: 1.5;
+}
+
+.login-page .checkbox-text a {
+  color: var(--login-yellow-gold);
+  text-decoration: none;
+}
+
+.login-page .checkbox-text a:hover {
+  text-decoration: underline;
+}
+
+.login-page .terms-group.error .checkbox-text {
+  color: #EF4444;
+}
+
+/* Submit Button */
+.login-page .submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  background: var(--login-gradient-gold);
+  border: none;
+  border-radius: var(--login-border-radius-element);
+  color: var(--login-black-950);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--login-transition-smooth);
+  box-shadow: var(--login-glow-gold-soft);
+  margin-bottom: 20px;
+}
+
+.login-page .submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--login-glow-gold-medium);
+}
+
+.login-page .submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login-page .spinner {
+  animation: login-spin 1s linear infinite;
+}
+
+@keyframes login-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Divider */
+.login-page .divider {
+  position: relative;
+  text-align: center;
+  margin: 24px 0;
+}
+
+.login-page .divider::before,
+.login-page .divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 30px);
+  height: 1px;
+  background: var(--login-glass-border);
+}
+
+.login-page .divider::before {
+  left: 0;
+}
+
+.login-page .divider::after {
+  right: 0;
+}
+
+.login-page .divider span {
+  background: var(--login-black-800);
+  padding: 0 16px;
+  color: var(--login-text-tertiary);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+/* Google Button */
+.login-page .google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  background: var(--login-black-800);
+  border: 1px solid var(--login-glass-border);
+  border-radius: var(--login-border-radius-element);
+  color: var(--login-text-primary);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: var(--login-transition-smooth);
+  margin-bottom: 24px;
+}
+
+.login-page .google-button:hover:not(:disabled) {
+  border-color: var(--login-yellow-gold);
+  background: rgba(245, 158, 11, 0.05);
+  transform: translateY(-2px);
+}
+
+.login-page .google-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Toggle Mode */
+.login-page .toggle-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--login-text-tertiary);
+}
+
+.login-page .toggle-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  color: var(--login-yellow-gold);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--login-transition-fast);
+}
+
+.login-page .toggle-button:hover {
+  gap: 8px;
+  color: var(--login-yellow-light);
+}
+
+/* Security Badge */
+.login-page .security-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 24px;
+  font-size: 11px;
+  color: var(--login-text-tertiary);
+}
+
+.login-page .security-badge svg {
+  color: var(--login-yellow-gold);
+}
+
+/* ===== RIGHT COLUMN - BENEFITS ===== */
+.login-page .login-benefits-column {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.login-page .benefits-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.login-page .benefits-background-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.login-page .benefits-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(37, 99, 235, 0.6) 50%, rgba(245, 158, 11, 0.3) 100%);
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+.login-page .benefits-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, var(--login-blue-navy) 0%, transparent 60%),
+              radial-gradient(circle at 70% 70%, var(--login-yellow-gold) 0%, transparent 60%);
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+
+.login-page .benefits-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(245, 158, 11, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 3;
+  opacity: 0.2;
+}
+
+.login-page .benefits-content {
+  position: relative;
+  z-index: 4;
+  max-width: 500px;
+  padding: 40px;
+  color: white;
+}
+
+.login-page .benefits-header {
+  margin-bottom: 40px;
+}
+
+.login-page .benefits-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.login-page .benefits-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+.login-page .benefits-main-title {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.login-page .title-gradient-blue {
+  background: var(--login-gradient-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.login-page .title-gradient-gold {
+  background: var(--login-gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.login-page .benefits-main-description {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Benefits Slider */
+.login-page .benefits-slider {
+  position: relative;
+  min-height: 280px;
+  margin-bottom: 40px;
+}
+
+.login-page .benefit-card {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--login-border-radius-card);
+  padding: 32px;
+  text-align: center;
+}
+
+.login-page .benefit-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: white;
+  transition: var(--login-transition-smooth);
+}
+
+.login-page .benefit-card:hover .benefit-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.login-page .benefit-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.login-page .benefit-description {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Slider Controls */
+.login-page .slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.login-page .slider-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--login-transition-fast);
+}
+
+.login-page .slider-button:hover {
+  background: var(--login-gradient-gold);
+  border-color: transparent;
+  color: var(--login-black-950);
+  transform: scale(1.1);
+}
+
+.login-page .slider-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.login-page .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: var(--login-transition-fast);
+}
+
+.login-page .dot.active {
+  background: var(--login-yellow-gold);
+  transform: scale(1.3);
+  box-shadow: var(--login-glow-gold-soft);
+}
+
+/* Slider Footer */
+.login-page .slider-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.login-page .benefit-counter {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.login-page .benefit-badge {
+  padding: 4px 12px;
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid var(--login-yellow-gold);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--login-yellow-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Benefits Stats */
+.login-page .benefits-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--login-border-radius-card);
+}
+
+.login-page .benefits-stat {
+  text-align: center;
+}
+
+.login-page .benefits-stat-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--login-yellow-gold);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin-bottom: 4px;
+}
+
+.login-page .benefits-stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 1024px) {
+  .login-page {
+    flex-direction: column;
+  }
+  
+  .login-page .login-benefits-column {
+    min-height: 500px;
+  }
+  
+  .login-page .benefits-content {
+    max-width: 100%;
+    padding: 40px 20px;
+  }
+  
+  .login-page .benefits-main-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-page .login-form-column {
+    padding: 20px;
+  }
+  
+  .login-page .form-container {
+    max-width: 100%;
+  }
+  
+  .login-page .user-type-toggle {
+    flex-direction: column;
+    border-radius: var(--login-border-radius-element);
+  }
+  
+  .login-page .benefits-main-title {
+    font-size: 32px;
+  }
+  
+  .login-page .benefit-card {
+    padding: 24px;
+  }
+  
+  .login-page .benefits-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page .form-title {
+    font-size: 28px;
+  }
+  
+  .login-page .logo-text-wrapper {
+    display: none;
+  }
+  
+  .login-page .type-button {
+    font-size: 13px;
+  }
+  
+  .login-page .benefits-main-title {
+    font-size: 28px;
+  }
+  
+  .login-page .slider-controls {
+    gap: 12px;
+  }
+  
+  .login-page .slider-button {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ===== SCROLLBAR PERSONALIZADA ===== */
+.login-page .login-form-column::-webkit-scrollbar {
+  width: 6px;
+}
+
+.login-page .login-form-column::-webkit-scrollbar-track {
+  background: var(--login-black-900);
+}
+
+.login-page .login-form-column::-webkit-scrollbar-thumb {
+  background: var(--login-gradient-blue);
+  border-radius: 3px;
+}
+
+.login-page .login-form-column::-webkit-scrollbar-thumb:hover {
+  background: var(--login-gradient-gold);
+}
+
+/* ===== SELEÇÃO DE TEXTO ===== */
+.login-page ::selection {
+  background: var(--login-yellow-gold);
+  color: var(--login-black-950);
+}
+
+.login-page ::-moz-selection {
+  background: var(--login-yellow-gold);
+  color: var(--login-black-950);
+}
